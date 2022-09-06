@@ -7,9 +7,17 @@
 
 function blob_fixup() {
     case "${1}" in
+
         vendor/lib/hw/camera.sdm660.so)
         [ "$2" = "" ] && return 0
             grep -q "libcamera_sdm660_shim.so" "${2}" || "${PATCHELF}" --add-needed "libcamera_sdm660_shim.so" "${2}"
+            ;;
+        vendor/lib/libMiWatermark.so)
+        [ "$2" = "" ] && return 0
+            "${PATCHELF}" --add-needed "libpiex-v29.so" "${2}"
+            ;;
+        *)
+            return 1
             ;;
     esac
     return 0
