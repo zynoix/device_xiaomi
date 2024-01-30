@@ -79,9 +79,6 @@ TARGET_USES_GRALLOC4 := true
 TARGET_USES_ION := true
 TARGET_SCREEN_DENSITY := 440
 
-# DT2W
-TARGET_TAP_TO_WAKE_NODE := "/sys/touchpanel/double_tap"
-
 # FM
 ifeq ($(BOARD_HAVE_QCOM_FM),true)
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
