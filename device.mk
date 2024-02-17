@@ -169,6 +169,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Fingerprint
 PRODUCT_PACKAGES += \
+    com.fingerprints.extension@1.0.vendor \
     android.hardware.biometrics.fingerprint@2.3-service.xiaomi
 
 # FM
@@ -379,12 +380,16 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+<<<<<<< HEAD
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(DEVICE_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(DEVICE_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
 
 # WiFi firmware symlinks
+=======
+# Wifi
+>>>>>>> c6f6a43 (jason: Build fingerprint extension interfaces from source)
 PRODUCT_PACKAGES += \
     firmware_wlan_mac.bin_symlink \
     firmware_WCNSS_qcom_cfg.ini_symlink
