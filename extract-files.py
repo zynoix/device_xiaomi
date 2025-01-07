@@ -63,6 +63,10 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libcamera_sdm660_shim.so'),
     'vendor/lib/libMiWatermark.so': blob_fixup()
         .add_needed('libpiex_shim.so'),
+    ('vendor/lib/libmmcamera_faceproc.so', 'vendor/lib/libmmcamera_faceproc2.so'): blob_fixup()
+        .clear_symbol_version('__aeabi_memcpy')
+        .clear_symbol_version('__aeabi_memset')
+        .clear_symbol_version('__gnu_Unwind_Find_exidx'),
     'vendor/lib64/libgf_ca.so': blob_fixup()
         .binary_regex_replace(b'/system/etc/firmware', b'/vendor/firmware\x00\x00\x00\x00'),
 }  # fmt: skip
