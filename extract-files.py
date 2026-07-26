@@ -23,7 +23,7 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'device/xiaomi/sdm660-common',
+    'device/xiaomi/tulip',
     'hardware/qcom-caf/sdm660',
     'hardware/qcom-caf/wlan',
     'hardware/xiaomi',
@@ -59,10 +59,16 @@ blob_fixups: blob_fixups_user_type = {
         .remove_needed('vendor.xiaomi.hardware.mtdservice@1.0.so'),
     'vendor/lib64/libwvhidl.so': blob_fixup()
         .add_needed('libcrypto_shim.so'),
+    'vendor/lib/hw/camera.sdm660.so': blob_fixup()
+        .add_needed('libcamera_sdm660_shim.so'),
+    'vendor/lib/libMiWatermark.so': blob_fixup()
+        .add_needed('libpiex_shim.so'),
+    'vendor/lib64/libgf_ca.so': blob_fixup()
+        .binary_regex_replace(b'/system/etc/firmware', b'/vendor/firmware\x00\x00\x00\x00'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
-    'sdm660-common',
+    'tulip',
     'xiaomi',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
